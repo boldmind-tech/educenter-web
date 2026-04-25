@@ -1,0 +1,44 @@
+{
+  "type": "module",
+  "name": "@boldmind-tech/educenter",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@boldmind-tech/api-client": "3.0.0",
+    "@boldmind-tech/auth": "3.0.0",
+    "@boldmind-tech/payments": "3.0.0",
+    "@boldmind-tech/ui": "3.0.0",
+    "@boldmind-tech/utils": "3.0.0",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.6.2",
+    "clsx": "^2.0.0",
+    "cookie": "^1.1.1",
+    "date-fns": "^3.0.0",
+    "lucide-react": "^0.309.0",
+    "next": "14.2.35",
+    "postcss": "^8.4.38",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "recharts": "^2.10.3",
+    "tailwind-merge": "^2.1.0",
+    "tailwindcss": "^3.4.1",
+    "framer-motion": "^12.29.2",
+    "@types/node": "^20.11.3",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.4.5",
+    "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35"
+  }
+}

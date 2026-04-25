@@ -1,0 +1,75 @@
+
+
+@import '@boldmind-tech/ui/styles/globals.css';
+ 
+:root {
+  --edu-blue-50:  #EFF6FF;
+  --edu-blue-100: #DBEAFE;
+  --edu-blue-600: #2563EB;
+  --edu-blue-700: #1D4ED8;
+  --edu-amber:    #F59E0B;
+}
+ 
+.quick-link-card:hover { border-color: var(--product-primary) !important; }
+
+.question-card {
+  border: 2px solid var(--product-muted);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  background-color: var(--product-background);
+  transition: border-color var(--transition-quick);
+}
+.question-card:hover { border-color: var(--product-primary); }
+.question-card.selected {
+  border-color: var(--product-primary);
+  background-color: var(--product-highlight);
+}
+.question-card.correct  { border-color: var(--color-success); background-color: var(--color-success-light); }
+.question-card.incorrect { border-color: var(--color-error);  background-color: var(--color-error-light); }
+ 
+.cbt-timer {
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--product-primary);
+  letter-spacing: 0.05em;
+}
+.cbt-timer.warning { color: var(--color-warning); }
+.cbt-timer.danger  { color: var(--color-error); animation: pulse 1s infinite; }
+ 
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  background-color: var(--edu-amber);
+  color: white;
+}
+ 
+.progress-bar {
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--product-muted);
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--product-primary), var(--product-accent));
+  transition: width var(--transition-slow);
+}
+ 
+@keyframes animate-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes animate-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-float { animation: animate-float 3s ease-in-out infinite; }
+.animate-float-delayed { animation: animate-float 3s ease-in-out 1.5s infinite; }
+.animate-gradient { background-size: 200% 200%; animation: animate-gradient 4s ease infinite; }
