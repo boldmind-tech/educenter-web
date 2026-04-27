@@ -53,7 +53,15 @@ export default function ProgressPage() {
         try {
             setLoading(true);
             const response = await educenterAPI.getProgress();
-            setProgress(response.data);
+            const dashboard = response.data;
+            setProgress({
+                subject: subject || 'Overall',
+                examType: examType || '',
+                questionsAttempted: dashboard.questionsAnswered,
+                correctAnswers: Math.round((dashboard.avgScore / 100) * dashboard.questionsAnswered),
+                totalTimeSpent: dashboard.totalSessions * 60,
+                lastPractice: new Date().toISOString(),
+            });
         } catch (error: any) {
             console.error('Error loading progress:', error);
             toast.error('Failed to load progress');

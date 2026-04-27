@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SuperNavbar, SuperFooter } from '@boldmind/ui';
+import { SuperNavbar, SuperFooter } from '@boldmind-tech/ui';
 import Link from 'next/link';
 import { AuthProvider } from '@boldmind-tech/auth';
 import { ReactNode } from 'react';

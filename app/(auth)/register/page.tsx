@@ -24,7 +24,7 @@ const getPasswordStrength = (password: string) => {
 
 export default function RegisterPage() {
   const router = useRouter();
-  const { signUp, signInWithOAuth, isLoading: authLoading } = useAuth();
+  const { register, loginWithGoogle, isLoading: authLoading } = useAuth();
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -89,15 +89,11 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      // Register user
-      await signUp(
-        formData.email,
-        formData.password,
-        {
-          fullName: formData.fullName,
-          subscribeNewsletter: formData.subscribeNewsletter
-        }
-      );
+      await register({
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+      });
 
       toast.success('Registration successful! Please check your email.');
       router.push(`/verify-email?email=${encodeURIComponent(formData.email)}`);
@@ -108,11 +104,11 @@ export default function RegisterPage() {
     }
   };
 
-  const handleSocialSignup = async (provider: 'google' | 'github' | 'twitter' | 'facebook') => {
+  const handleSocialSignup = () => {
     try {
-      await signInWithOAuth(provider);
+      loginWithGoogle();
     } catch (error: any) {
-      toast.error(error.message || `Failed to connect with ${provider}`);
+      toast.error(error.message || 'Failed to connect with Google');
     }
   };
 
@@ -130,7 +126,7 @@ export default function RegisterPage() {
 
       {/* Social Login Buttons */}
       <motion.button
-        onClick={() => handleSocialSignup('google')}
+        onClick={() => handleSocialSignup()}
         disabled={authLoading}
         whileHover={{ scale: authLoading ? 1 : 1.01 }}
         whileTap={{ scale: authLoading ? 1 : 0.99 }}

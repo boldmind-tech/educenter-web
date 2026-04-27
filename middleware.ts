@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 
 const HUB_URL =
   process.env['NEXT_PUBLIC_HUB_URL'] ||
-  (process.env.NODE_ENV === 'production' ? 'https://boldmind.ng' : 'http://localhost:3000');
+  (process.env.NODE_ENV === 'production' ? 'https://boldmind.ng' : 'http://localhost:4001');
 
 const SSO_COOKIE = 'boldmind_sso';
 

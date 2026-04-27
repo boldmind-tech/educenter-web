@@ -19,16 +19,18 @@ import {
 interface LeaderboardEntry {
     rank: number;
     userId: string;
-    correctAnswers: number;
-    questionsAttempted: number;
-    accuracy: string;
+    fullName?: string;
+    avatar?: string;
+    score: number;
+    sessions: number;
     streakDays?: number;
 }
 
 interface UserRank {
     rank: number;
-    total: number;
-    progress: any;
+    userId: string;
+    score: number;
+    sessions: number;
 }
 
 export default function LeaderboardPage() {
@@ -56,8 +58,8 @@ export default function LeaderboardPage() {
         try {
             setLoading(true);
             const response = await educenterAPI.getLeaderboard({
-                examType: selectedExamType || '',
-                subject: selectedSubject || '',
+                examType: (selectedExamType as any) || undefined,
+                subject: selectedSubject || undefined,
             });
             setLeaderboard(response.data || []);
         } catch (error) {
@@ -73,10 +75,10 @@ export default function LeaderboardPage() {
 
         try {
             const response = await educenterAPI.getMyRank({
-                examType: selectedExamType || '',
-                subject: selectedSubject || '',
+                examType: (selectedExamType as any) || undefined,
+                subject: selectedSubject || undefined,
             });
-            setUserRank(response.data);
+            setUserRank(response.data as unknown as UserRank);
         } catch (error) {
             console.error('Error loading user rank:', error);
         }
@@ -176,7 +178,7 @@ export default function LeaderboardPage() {
                             <div>
                                 <p className="text-blue-100 mb-1">Your Rank</p>
                                 <h2 className="text-4xl font-bold">#{userRank.rank}</h2>
-                                <p className="text-blue-100 mt-1">out of {userRank.total} students</p>
+                                <p className="text-blue-100 mt-1">Score: {userRank.score}</p>
                             </div>
                             <TrendingUp className="w-16 h-16 text-white/30" />
                         </div>
@@ -196,8 +198,8 @@ export default function LeaderboardPage() {
                                     2
                                 </div>
                                 <p className="font-bold text-gray-900 dark:text-white mb-1">User #{leaderboard[1]?.userId.slice(0, 8)}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{leaderboard[1]?.correctAnswers} correct</p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500">{leaderboard[1]?.accuracy}% accuracy</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Score: {leaderboard[1]?.score}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">{leaderboard[1]?.sessions} sessions</p>
                             </div>
                         </div>
 
@@ -211,8 +213,8 @@ export default function LeaderboardPage() {
                                     1
                                 </div>
                                 <p className="font-bold text-white mb-1">User #{leaderboard[0]?.userId.slice(0, 8)}</p>
-                                <p className="text-sm text-yellow-100">{leaderboard[0]?.correctAnswers} correct</p>
-                                <p className="text-xs text-yellow-200">{leaderboard[0]?.accuracy}% accuracy</p>
+                                <p className="text-sm text-yellow-100">Score: {leaderboard[0]?.score}</p>
+                                <p className="text-xs text-yellow-200">{leaderboard[0]?.sessions} sessions</p>
                             </div>
                         </div>
 
@@ -226,8 +228,8 @@ export default function LeaderboardPage() {
                                     3
                                 </div>
                                 <p className="font-bold text-gray-900 dark:text-white mb-1">User #{leaderboard[2]?.userId.slice(0, 8)}</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{leaderboard[2]?.correctAnswers} correct</p>
-                                <p className="text-xs text-gray-500 dark:text-gray-500">{leaderboard[2]?.accuracy}% accuracy</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Score: {leaderboard[2]?.score}</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500">{leaderboard[2]?.sessions} sessions</p>
                             </div>
                         </div>
                     </div>
@@ -241,9 +243,8 @@ export default function LeaderboardPage() {
                                 <tr>
                                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Rank</th>
                                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">User</th>
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Questions</th>
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Correct</th>
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Accuracy</th>
+                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Sessions</th>
+                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Score</th>
                                     {leaderboard.some(e => e.streakDays) && (
                                         <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Streak</th>
                                     )}
@@ -277,11 +278,8 @@ export default function LeaderboardPage() {
                                                 </span>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-gray-900 dark:text-white">{entry.questionsAttempted}</td>
-                                        <td className="px-6 py-4 text-green-600 dark:text-green-400 font-semibold">{entry.correctAnswers}</td>
-                                        <td className="px-6 py-4">
-                                            <span className="text-gray-900 dark:text-white font-semibold">{entry.accuracy}%</span>
-                                        </td>
+                                        <td className="px-6 py-4 text-gray-900 dark:text-white">{entry.sessions}</td>
+                                        <td className="px-6 py-4 text-green-600 dark:text-green-400 font-semibold">{entry.score}</td>
                                         {leaderboard.some(e => e.streakDays) && (
                                             <td className="px-6 py-4">
                                                 <span className="inline-flex items-center space-x-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">

@@ -1,4 +1,3 @@
-//apps/educenter/app/(auth)/verify-email/page.tsx
 'use client';
 
 import { motion } from 'framer-motion';

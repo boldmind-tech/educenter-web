@@ -50,69 +50,44 @@ export default function EduCenterHomePage() {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Home", },
-    { href: "/courses", label: "Courses", },
-    {
-      href: "/jamb",
-      label: "JAMB Prep",
-    },
-    { href: "/waec-neco", label: "WAEC/NECO", },
-    { href: "/business", label: "Business", },
-    { href: "/ai-tools", label: "AI Tools", },
-    { href: "/pricing", label: "Pricing", },
-    { href: "/community", label: "Community", },
+    { href: "/", label: "Home" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "https://amebogist.ng", label: "Blog", isExternal: true },
+    { href: "https://villagecircle.ng", label: "Community", isExternal: true },
+    { href: "/login", label: "Login" },
   ];
 
   const footerSections = [
     {
       title: "📚 EXAM PREP",
       links: [
-        { href: "/jamb/practice", label: "JAMB Practice (10K+ Qs)" },
-        { href: "/jamb/past-questions", label: "Past Questions (2010-2025)" },
-        { href: "/waec", label: "WAEC Subjects" },
-        { href: "/neco", label: "NECO Subjects" },
-        { href: "/cbt-simulator", label: "CBT Simulator", badge: "NEW" },
-        { href: "/performance-analytics", label: "Performance Analytics" },
+        { href: "/register", label: "Get Started" },
+        { href: "/login", label: "Login to Practice" },
+        { href: "/pricing", label: "View Plans" },
       ],
     },
     {
-      title: "💼 BUSINESS",
+      title: "💼 PLATFORM",
       links: [
-        {
-          href: "/courses/digital-business",
-          label: "Digital Business Courses",
-        },
-        { href: "/sales-funnels", label: "Sales Funnel Templates" },
-        { href: "/whatsapp-automation", label: "WhatsApp Automation" },
-        { href: "/marketing-playbooks", label: "Marketing Playbooks" },
-        { href: "/masterclasses", label: "Expert Masterclasses" },
-        { href: "/community/entrepreneurs", label: "Entrepreneur Community" },
+        { href: "/register", label: "Create Account" },
+        { href: "/login", label: "Sign In" },
+        { href: "/pricing", label: "Pricing" },
       ],
     },
     {
-      title: "🤖 AI TOOLS",
+      title: "🌍 ECOSYSTEM",
       links: [
-        { href: "/ai/video-generation", label: "AI Video Generation" },
-        { href: "/ai/prompt-engineering", label: "Prompt Engineering Course" },
-        { href: "/ai/whatsapp-automation", label: "WhatsApp AI Automation" },
-        { href: "/ai/content-suite", label: "Content Creation Suite" },
-        { href: "/ai/marketplace", label: "AI Tools Marketplace" },
-        { href: "/ai/learning-path", label: "AI Skills Learning Path" },
+        { href: "https://amebogist.ng", label: "Blog (AmeboGist)", isExternal: true },
+        { href: "https://villagecircle.ng", label: "Community (VillageCircle)", isExternal: true },
+        { href: "https://villagecircle.ng/vibecoders", label: "Vibe Coders Bootcamp ↗", isExternal: true },
+        { href: "https://boldmind.ng", label: "BoldMind Ecosystem", isExternal: true },
       ],
     },
     {
-      title: "🏫 RESOURCES",
+      title: "📋 LEGAL",
       links: [
-        { href: "/blog", label: "Study Tips Blog" },
-        { href: "/faq", label: "FAQ & Help Center" },
-        { href: "/career-guidance", label: "Career Guidance" },
-        { href: "/scholarships", label: "Scholarship Opportunities" },
-        { href: "/downloads", label: "Free Downloads" },
-        {
-          href: "https://boldmind.ng",
-          label: "BoldMind Ecosystem",
-          isExternal: true,
-        },
+        { href: "/privacy", label: "Privacy Policy" },
+        { href: "/terms", label: "Terms of Service" },
       ],
     },
   ];
@@ -162,6 +137,7 @@ export default function EduCenterHomePage() {
       title: "JAMB Aspirant",
       icon: "🎯",
       description: "Score 300+ in JAMB 2026",
+      href: "/study-hub",
       steps: [
         "Diagnostic Test",
         "Personalized Plan",
@@ -177,6 +153,7 @@ export default function EduCenterHomePage() {
       title: "Business Builder",
       icon: "💼",
       description: "Start & Scale Digital Business",
+      href: "/business-school",
       steps: [
         "Idea Validation",
         "Sales Funnels",
@@ -192,6 +169,7 @@ export default function EduCenterHomePage() {
       title: "AI Specialist",
       icon: "🤖",
       description: "Master AI Tools for Career",
+      href: "/subscription",
       steps: [
         "AI Fundamentals",
         "Prompt Engineering",
@@ -207,6 +185,7 @@ export default function EduCenterHomePage() {
       title: "WAEC Excellence",
       icon: "🏆",
       description: "Ace All WAEC Subjects",
+      href: "/study-hub",
       steps: [
         "Weakness Analysis",
         "Topic Mastery",
@@ -294,12 +273,36 @@ export default function EduCenterHomePage() {
     },
   ];
 
-  const techStack = [
-    { name: "Next.js 14", icon: "⚡", purpose: "Blazing Fast Performance" },
-    { name: "Paystack", icon: "💳", purpose: "Secure Payments" },
-    { name: "PWA", icon: "📱", purpose: "Mobile App Experience" },
-    { name: "WhatsApp API", icon: "💬", purpose: "Instant Support" },
-    { name: "AI APIs", icon: "🧠", purpose: "Smart Learning" },
+  const [activeStep, setActiveStep] = useState(0);
+
+  const howItWorks = [
+    {
+      step: "01",
+      title: "Create Your Free Account",
+      desc: "Sign up in 30 seconds. No credit card. Pick your exam target — JAMB, WAEC, NECO, or GCE.",
+      icon: Rocket,
+      color: "from-blue-500 to-cyan-500",
+      bg: "bg-blue-50",
+      detail: ["Instant access to 500 free questions", "Diagnostic test to find your weak spots", "Personalised study plan generated automatically"],
+    },
+    {
+      step: "02",
+      title: "Practice & Learn Daily",
+      desc: "Use CBT simulation, past questions, video lessons, and AI-powered explanations to master every topic.",
+      icon: Brain,
+      color: "from-purple-500 to-pink-500",
+      bg: "bg-purple-50",
+      detail: ["10,000+ past questions with full explanations", "Track streaks and earn daily XP", "Business & AI courses alongside exam prep"],
+    },
+    {
+      step: "03",
+      title: "Hit Your Target Score",
+      desc: "Watch your performance analytics climb. Compete on the national leaderboard. Walk into your exam confident.",
+      icon: Target,
+      color: "from-green-500 to-emerald-500",
+      bg: "bg-green-50",
+      detail: ["Real-time analytics on every subject", "Mock exams with timer (CBT mode)", "Certificate of completion for business courses"],
+    },
   ];
 
   const handleNavClick = (href: string) => {
@@ -422,11 +425,13 @@ export default function EduCenterHomePage() {
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="/demo"
+                  href="https://wa.me/2349138349271"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 transition-all backdrop-blur-sm"
                 >
                   <PlayCircle className="w-5 h-5" />
-                  Watch 3-min Demo
+                  Chat on WhatsApp
                 </motion.a>
               </div>
 
@@ -511,13 +516,13 @@ export default function EduCenterHomePage() {
                 {/* Quick actions */}
                 <div className="grid grid-cols-2 gap-3">
                   <a
-                    href="/jamb/practice"
+                    href="/study-hub"
                     className="p-3 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-center text-sm transition-colors"
                   >
                     Practice Now
                   </a>
                   <a
-                    href="/courses"
+                    href="/business-school"
                     className="p-3 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg text-center text-sm transition-colors"
                   >
                     Explore Courses
@@ -674,7 +679,7 @@ export default function EduCenterHomePage() {
                 </div>
 
                 <a
-                  href={`/path/${path.title.toLowerCase().replace(" ", "-")}`}
+                  href={path.href}
                   className="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
                 >
                   Start This Path
@@ -753,100 +758,339 @@ export default function EduCenterHomePage() {
         </div>
       </section>
 
-      {/* Tech Stack */}
-      <section className="py-16 bg-gray-900 text-white">
+      {/* BoldMind Flywheel / Ecosystem */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-[#0F2744] to-[#1E3A5F] text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold mb-4">
-              Powered by Modern Technology
-            </h3>
-            <p className="text-gray-400">
-              Built for performance, scale, and security
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-6 border border-white/20">
+              <Sparkles className="w-4 h-4 text-yellow-400" />
+              The BoldMind Ecosystem
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black mb-6">
+              From Awareness to Enablement
+            </h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+              EduCenter is one pillar of the BoldMind flywheel — four interconnected platforms designed to take you from knowing to doing.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {techStack.map((tech, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                step: "01",
+                label: "Awareness",
+                name: "AmeboGist",
+                url: "https://amebogist.ng",
+                emoji: "📰",
+                color: "from-orange-500 to-amber-500",
+                description: "Nigeria's trending stories, culture & entertainment. Where the conversation starts.",
+                cta: "Read the Blog",
+              },
+              {
+                step: "02",
+                label: "Conviction",
+                name: "VillageCircle",
+                url: "https://villagecircle.ng",
+                emoji: "🏘️",
+                color: "from-green-500 to-emerald-500",
+                description: "Peer community, accountability circles & the Vibe Coders bootcamp. Where resolve is built.",
+                cta: "Join Community",
+              },
+              {
+                step: "03",
+                label: "Education",
+                name: "EduCenter",
+                url: "/",
+                emoji: "🎓",
+                color: "from-blue-500 to-cyan-500",
+                description: "Exam prep, digital business school & AI skills lab. Where transformation happens.",
+                cta: "You are here",
+                active: true,
+              },
+              {
+                step: "04",
+                label: "Enablement",
+                name: "BoldMind",
+                url: "https://boldmind.ng",
+                emoji: "⚡",
+                color: "from-purple-500 to-pink-500",
+                description: "Tools, APIs & infrastructure for creators and builders. Where ambition ships.",
+                cta: "Explore Platform",
+              },
+            ].map((pillar, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-6 bg-gray-800/50 rounded-xl hover:bg-gray-800 transition-colors"
+                transition={{ delay: index * 0.15 }}
+                className={`relative bg-white/5 rounded-2xl p-6 border ${pillar.active ? "border-blue-400 ring-2 ring-blue-400/30" : "border-white/10"} hover:border-white/30 transition-all`}
               >
-                <div className="text-3xl mb-3">{tech.icon}</div>
-                <div className="font-bold mb-1">{tech.name}</div>
-                <div className="text-sm text-gray-400">{tech.purpose}</div>
+                {pillar.active && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-blue-500 rounded-full text-xs font-bold whitespace-nowrap">
+                    You're here
+                  </div>
+                )}
+                <div className="text-xs font-bold text-white/40 mb-3 tracking-widest">STEP {pillar.step}</div>
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.color} flex items-center justify-center text-2xl mb-4`}>
+                  {pillar.emoji}
+                </div>
+                <div className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-1">{pillar.label}</div>
+                <h3 className="text-xl font-bold mb-3">{pillar.name}</h3>
+                <p className="text-sm text-blue-200 mb-5 leading-relaxed">{pillar.description}</p>
+                {pillar.active ? (
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300">
+                    <CheckCircle className="w-4 h-4" />
+                    {pillar.cta}
+                  </span>
+                ) : (
+                  <a
+                    href={pillar.url}
+                    target={pillar.url.startsWith("http") ? "_blank" : undefined}
+                    rel={pillar.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-blue-300 transition-colors"
+                  >
+                    {pillar.cta}
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                )}
               </motion.div>
+            ))}
+          </div>
+
+          {/* Vibe Coders callout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center text-2xl flex-shrink-0">
+                💻
+              </div>
+              <div>
+                <div className="text-xs font-bold text-green-400 uppercase tracking-wider mb-1">Coming Soon via VillageCircle</div>
+                <h3 className="text-xl font-bold">Vibe Coders Bootcamp</h3>
+                <p className="text-blue-200 text-sm mt-1">
+                  A hands-on coding & tech entrepreneurship bootcamp for Nigerian youth.
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://villagecircle.ng/vibecoders"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-400 text-white font-bold rounded-xl transition-colors"
+            >
+              Join Waitlist
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4 border border-blue-100">
+              <Zap className="w-4 h-4" />
+              Simple 3-step process
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-[#2A4A6E] mb-4">
+              From Zero to Top Score
+            </h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              Everything you need, in one place, in three steps.
+            </p>
+          </div>
+
+          {/* Step tabs */}
+          <div className="flex flex-col md:flex-row gap-3 mb-10 justify-center">
+            {howItWorks.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveStep(i)}
+                className={`flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all text-left ${
+                  activeStep === i
+                    ? "bg-[#2A4A6E] text-white shadow-lg scale-105"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                <span className={`text-xs font-black ${activeStep === i ? "text-blue-300" : "text-gray-400"}`}>
+                  {s.step}
+                </span>
+                {s.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Active step detail */}
+          {howItWorks.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={activeStep === i ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{ duration: 0.3 }}
+              className={`${activeStep === i ? "block" : "hidden"}`}
+            >
+              <div className="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-6 shadow-lg`}>
+                    <s.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-black text-[#2A4A6E] mb-4">{s.title}</h3>
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{s.desc}</p>
+                  <a
+                    href="/register"
+                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold bg-gradient-to-r ${s.color} hover:shadow-lg transition-all`}
+                  >
+                    Get Started Free
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+                <div className={`${s.bg} rounded-2xl p-8 border-2 border-gray-100`}>
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">What you get</div>
+                  <ul className="space-y-4">
+                    {s.detail.map((d, di) => (
+                      <li key={di} className="flex items-start gap-3">
+                        <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${s.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                          <CheckCircle className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="text-gray-700 font-medium">{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Step dots */}
+          <div className="flex justify-center gap-2 mt-10">
+            {howItWorks.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveStep(i)}
+                className={`rounded-full transition-all ${activeStep === i ? "w-8 h-3 bg-[#2A4A6E]" : "w-3 h-3 bg-gray-300 hover:bg-gray-400"}`}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-90" />
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-pulse" />
-        </div>
+      <section className="py-16 md:py-24 bg-[#0F1E35]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-              Start Your Journey Today
-            </h2>
-            <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-              Join 50,000+ students transforming their academic and professional
-              futures. Get access to everything for just ₦3,000/month after your
-              free trial.
-            </p>
+            {/* Left: Copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold mb-6 border border-green-500/30">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                50,000+ students already enrolled
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+                Your future starts
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"> tonight.</span>
+              </h2>
+              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                Every day you wait is a day your competition is practising. Start free — no card, no risk, no regrets.
+              </p>
+              <div className="space-y-3">
+                {[
+                  "500 free questions, no credit card",
+                  "Full CBT simulator for JAMB & WAEC",
+                  "Business & AI courses included",
+                  "National leaderboard & community",
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-gray-300">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a
-                href="/register"
-                className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white text-blue-600 font-bold text-lg rounded-xl hover:bg-gray-100 transition-all shadow-2xl min-w-[200px]"
-              >
-                <Rocket className="w-5 h-5" />
-                Start Free Trial
-              </a>
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  {["👩‍⚕️","👨‍💻","👩‍⚖️","👨‍🔬"].map((e, i) => (
+                    <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 border-2 border-[#0F1E35] flex items-center justify-center text-lg">
+                      {e}
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-gray-400 mt-0.5">4.8 from 2,000+ reviews</p>
+                </div>
+              </div>
+            </motion.div>
 
-              <div className="text-center">
-                <div className="text-white text-sm mb-2">Got questions?</div>
+            {/* Right: Pricing card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="bg-white rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
+
+                <div className="text-center mb-6">
+                  <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Start with</div>
+                  <div className="text-6xl font-black text-[#2A4A6E]">₦0</div>
+                  <div className="text-gray-500 mt-1">Free forever on the basics</div>
+                </div>
+
+                <div className="border-t border-gray-100 pt-6 mb-6 space-y-3">
+                  {[
+                    { label: "Practice Questions", value: "500 free" },
+                    { label: "CBT Simulator", value: "✓ Included" },
+                    { label: "Study Hub Access", value: "✓ Included" },
+                    { label: "Business Courses", value: "Subscribe to unlock" },
+                    { label: "AI Skills Lab", value: "Subscribe to unlock" },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center justify-between text-sm">
+                      <span className="text-gray-600">{row.label}</span>
+                      <span className={`font-semibold ${row.value.startsWith("✓") ? "text-green-600" : row.value === "500 free" ? "text-blue-600" : "text-gray-400"}`}>
+                        {row.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <a
+                  href="/register"
+                  className="block w-full text-center py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-xl hover:shadow-xl transition-all mb-4"
+                >
+                  Create Free Account →
+                </a>
+
                 <a
                   href="https://wa.me/2349138349271"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-all"
+                  className="flex items-center justify-center gap-2 w-full py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-green-400 hover:text-green-600 transition-all text-sm"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  Chat on WhatsApp
+                  Have questions? Chat on WhatsApp
                 </a>
-              </div>
-            </div>
 
-            <div className="mt-8 text-blue-100 text-sm">
-              <div className="flex flex-wrap justify-center gap-6">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>No setup fees</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>Cancel anytime</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  <span>7-day money back guarantee</span>
-                </div>
+                <p className="text-center text-xs text-gray-400 mt-4">
+                  No credit card · Cancel anytime · 7-day refund guarantee
+                </p>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

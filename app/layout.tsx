@@ -1,12 +1,9 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// apps/educenter/app/layout.tsx
-// ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { EducenterLayout } from "./educenterLayout";
 import { ErrorBoundary, FacebookSDK, CookieConsent } from "@boldmind-tech/ui";
-import "@boldmind-tech/ui/dist/index.css";
+
 import "./globals.css";
 
 const inter = Inter({

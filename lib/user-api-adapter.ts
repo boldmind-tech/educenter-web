@@ -4,7 +4,7 @@ import { boldMindAPI } from '@boldmind-tech/api-client';
 export const userAPIAdapter = {
   async getMe() {
     try {
-      const response = await boldMindAPI.users.getMe();
+      const response = await boldMindAPI.auth.me();
       return response as any;
     } catch (error) {
       console.error('[userAPIAdapter] Failed to fetch current user:', error);
@@ -32,7 +32,7 @@ export const userAPIAdapter = {
         },
       };
 
-      await boldMindAPI.users.createUser(payload as any);
+      await boldMindAPI.auth.register(payload as any);
     } catch (error: any) {
       console.error('[userAPIAdapter] Failed to create user:', error?.response?.data || error?.message || error);
       if (error?.response?.status === 409) {

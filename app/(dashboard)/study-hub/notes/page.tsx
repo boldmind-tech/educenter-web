@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@boldmind/auth';
+import { useAuth } from '@boldmind-tech/auth';
 import { educenterAPI } from '../../../../lib/api';
 import { EXAM_TYPES } from '../../../../lib/config';
 import toast from 'react-hot-toast';
@@ -60,7 +60,7 @@ export default function NotesPage() {
     const loadSubjects = async () => {
         try {
             setLoadingSubjects(true);
-            const response = await educenterAPI.getSubjects(selectedExamType);
+            const response = await educenterAPI.getSubjects(selectedExamType as any);
             setSubjects(response.data || []);
         } catch (error) {
             console.error('Error loading subjects:', error);
@@ -84,8 +84,14 @@ export default function NotesPage() {
 
         try {
             setLoading(true);
-            const response = await educenterAPI.getNotes(selectedExamType, selectedSubject);
-            setNotes(response.data || []);
+            const response = await educenterAPI.getNotes(selectedExamType as any, selectedSubject);
+            const noteData = ((response.data as unknown as any[]) || []).map((q: any) => ({
+                id: q.id,
+                title: q.topic || q.subject || 'Note',
+                content: q.explanation || q.question || '',
+                topicsCovered: [q.topic || q.subject].filter(Boolean) as string[],
+            }));
+            setNotes(noteData);
         } catch (error: any) {
             console.error('Error loading notes:', error);
             toast.error(error.response?.data?.error || 'Failed to load notes');
@@ -102,12 +108,8 @@ export default function NotesPage() {
         }
 
         try {
-            const response = await educenterAPI.downloadNote(noteId);
+            await educenterAPI.downloadNote(noteId);
             toast.success('Note download started');
-            // Open download URL in new tab
-            if (response.downloadUrl) {
-                window.open(response.downloadUrl, '_blank');
-            }
         } catch (error: any) {
             console.error('Error downloading note:', error);
             toast.error(error.response?.data?.error || 'Failed to download note');

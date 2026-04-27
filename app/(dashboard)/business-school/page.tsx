@@ -21,15 +21,14 @@ import {
 
 interface Course {
     id: string;
+    slug: string;
     title: string;
-    description: string;
-    category: string;
-    level: string;
+    description?: string;
+    category?: string;
+    level?: string;
     isPublished: boolean;
-    modules: any[];
-    _count: {
-        enrollments: number;
-    };
+    enrollCount?: number;
+    createdAt: string;
 }
 
 export default function BusinessSchoolPage() {
@@ -65,8 +64,7 @@ export default function BusinessSchoolPage() {
         try {
             setLoading(true as boolean);
             const response = await educenterAPI.getCourses({
-                category: selectedCategory || '',
-                isPublished: true as boolean,
+                category: selectedCategory || undefined,
             });
             setCourses(response.data || []);
         } catch (error) {
@@ -169,7 +167,7 @@ export default function BusinessSchoolPage() {
                             <div>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Students</p>
                                 <p className="text-3xl font-bold text-gray-900 dark:text-white mt-1">
-                                    {courses.reduce((sum, course) => sum + course._count.enrollments, 0)}
+                                    {courses.reduce((sum, course) => sum + (course.enrollCount || 0), 0)}
                                 </p>
                             </div>
                             <Users className="w-10 h-10 text-green-500" />
@@ -257,11 +255,11 @@ export default function BusinessSchoolPage() {
                                     <div className="flex items-center justify-between mb-4 text-sm text-gray-600 dark:text-gray-400">
                                         <div className="flex items-center space-x-1">
                                             <PlayCircle className="w-4 h-4" />
-                                            <span>{course.modules?.length || 0} modules</span>
+                                            <span>Online course</span>
                                         </div>
                                         <div className="flex items-center space-x-1">
                                             <Users className="w-4 h-4" />
-                                            <span>{course._count.enrollments} students</span>
+                                            <span>{course.enrollCount || 0} students</span>
                                         </div>
                                     </div>
 

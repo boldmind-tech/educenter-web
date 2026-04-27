@@ -51,7 +51,7 @@ export default function QuizHistoryPage() {
         try {
             setLoading(true);
             const response = await educenterAPI.getMyQuizzes();
-            setQuizzes(response || []);
+            setQuizzes((response.data as unknown as Quiz[]) || []);
         } catch (error: any) {
             console.error('Error loading quizzes:', error);
             toast.error('Failed to load quiz history');

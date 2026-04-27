@@ -8,11 +8,6 @@ import { SUBSCRIPTION_PLANS } from '../../../lib/config';
 import toast from 'react-hot-toast';
 import { CheckCircle, Zap, Crown, Sparkles, Loader2 } from 'lucide-react';
 
-declare global {
-  interface Window {
-    PaystackPop: any;
-  }
-}
 
 interface SubscriptionData {
   active: boolean;
@@ -86,6 +81,23 @@ export default function SubscriptionPage() {
       });
 
       // Open Paystack popup
+      if (!window.PaystackPop) {
+        toast.error('Payment system not loaded. Please try again.');
+        setLoading(false);
+        return;
+      }
+
+      const verifyAndActivate = async (reference: string) => {
+        try {
+          await educenterAPI.verifyPayment(reference);
+          toast.success('Subscription activated successfully!');
+          await loadSubscription();
+          router.push('/dashboard');
+        } catch (error) {
+          toast.error('Payment verification failed');
+        }
+      };
+
       const handler = window.PaystackPop.setup({
         key: process.env['NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY']!,
         email: user.email!,
@@ -96,16 +108,11 @@ export default function SubscriptionPage() {
           plan,
           pillar,
         },
-        callback: async (response: any) => {
-          // Verify payment
-          try {
-            await educenterAPI.verifyPayment(response.reference);
-            toast.success('Subscription activated successfully!');
-            await loadSubscription();
-            router.push('/dashboard');
-          } catch (error) {
-            toast.error('Payment verification failed');
-          }
+        onSuccess: (response: { reference: string }) => {
+          verifyAndActivate(response.reference);
+        },
+        callback: (response: { reference: string }) => {
+          verifyAndActivate(response.reference);
         },
         onClose: () => {
           toast.error('Payment cancelled');

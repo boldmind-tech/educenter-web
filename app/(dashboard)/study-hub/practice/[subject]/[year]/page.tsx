@@ -52,7 +52,7 @@ export default function PracticePage() {
     const { user } = useAuth();
 
     const subject = params['subject'] as string;
-    const examType = (searchParams.get('examType') || 'jamb').toLowerCase();
+    const examType = (searchParams.get('examType') || 'JAMB').toUpperCase() as 'JAMB' | 'WAEC' | 'NECO' | 'GCE';
 
     const [quiz, setQuiz] = useState<Quiz | null>(null);
     const [questions, setQuestions] = useState<Question[]>([]);
@@ -87,8 +87,16 @@ export default function PracticePage() {
                 numberOfQuestions: 20,
             });
 
-            setQuiz(response.quiz);
-            setQuestions(response.questions);
+            const session = response.data;
+            setQuiz({
+                id: session.id,
+                userId: '',
+                examType: session.examType,
+                subject: session.subject,
+                totalQuestions: session.questions.length,
+                status: session.status,
+            });
+            setQuestions(session.questions);
 
             // Start timer
             const interval = setInterval(() => {
@@ -96,7 +104,7 @@ export default function PracticePage() {
             }, 1000);
             setTimer(interval);
 
-            toast.success(`Loaded ${response.questions.length} questions`);
+            toast.success(`Loaded ${session.questions.length} questions`);
         } catch (error: any) {
             console.error('Error starting quiz:', error);
             toast.error(error.response?.data?.message || 'Failed to start quiz');
@@ -138,10 +146,24 @@ export default function PracticePage() {
 
         try {
             const response = await educenterAPI.submitQuiz(quiz.id, userAnswers);
-            setResult(response);
+            const apiResult = response.data;
+            const mappedResult: QuizResult = {
+                quiz,
+                results: Object.fromEntries(
+                    (apiResult.review || []).map(r => [r.questionId, {
+                        userAnswer: apiResult.answers[r.questionId] || '',
+                        correctAnswer: r.correctAnswer,
+                        isCorrect: r.correct,
+                    }])
+                ),
+                score: apiResult.score,
+                total: apiResult.total,
+                percentage: apiResult.percentage,
+            };
+            setResult(mappedResult);
             setShowResults(true);
 
-            toast.success(`You scored ${response.percentage}%!`);
+            toast.success(`You scored ${apiResult.percentage}%!`);
         } catch (error: any) {
             console.error('Error submitting quiz:', error);
             toast.error(error.response?.data?.message || 'Failed to submit quiz');
@@ -198,7 +220,7 @@ export default function PracticePage() {
                     <div className="flex items-center justify-between">
                         <div>
                             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                                {subject} - {examType.toUpperCase()}
+                                {subject} - {examType}
                             </h1>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Question {currentIndex + 1} of {questions.length}
