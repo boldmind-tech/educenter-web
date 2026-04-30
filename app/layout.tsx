@@ -216,6 +216,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="//api.boldmind.ng" />
         <link rel="dns-prefetch" href="//cdn.boldmind.ng" />
         <meta name="mobile-web-app-capable" content="yes" />
+         <meta name="facebook-domain-verification" content="s5hbjxwm6eqlaopdgfit3mk3okv4jy" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="geo.region" content="NG-LA" />

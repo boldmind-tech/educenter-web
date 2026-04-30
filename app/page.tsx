@@ -811,7 +811,7 @@ export default function EduCenterHomePage() {
                 step: "04",
                 label: "Enablement",
                 name: "BoldMind",
-                url: "https://boldmind.ng",
+                url: "https://planai.boldmind.ng",
                 emoji: "⚡",
                 color: "from-purple-500 to-pink-500",
                 description: "Tools, APIs & infrastructure for creators and builders. Where ambition ships.",
@@ -878,7 +878,7 @@ export default function EduCenterHomePage() {
               </div>
             </div>
             <a
-              href="https://villagecircle.ng/vibecoders"
+              href="https://villagecircle.ng/vibe-coders"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-400 text-white font-bold rounded-xl transition-colors"
