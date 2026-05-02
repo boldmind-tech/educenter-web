@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-import { useAuthStore, clearRefreshToken } from '@boldmind-tech/auth';
+import { useAuthStore, clearRefreshToken } from '@/lib/auth';
 
 
 import {

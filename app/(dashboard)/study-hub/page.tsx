@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useAuth } from '@boldmind-tech/auth';
+import { useAuth } from '@/lib/auth';
 import {
   GraduationCap,
   BookOpen,

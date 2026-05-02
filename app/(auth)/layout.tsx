@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { SuperNavbar, SuperFooter } from '@boldmind-tech/ui';
 import Link from 'next/link';
-import { AuthProvider } from '@boldmind-tech/auth';
+import { AuthProvider } from '@/lib/auth';
 import { ReactNode } from 'react';
 
 // Background dots pattern

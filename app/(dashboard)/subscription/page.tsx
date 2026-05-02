@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@boldmind-tech/auth';
+import { useAuth } from '@/lib/auth';
 import { educenterAPI } from '../../../lib/api';
 import { SUBSCRIPTION_PLANS } from '../../../lib/config';
 import toast from 'react-hot-toast';

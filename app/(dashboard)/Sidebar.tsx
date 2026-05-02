@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { authApi } from '@boldmind-tech/auth';
-import type { AuthUser, TokenPair } from '@boldmind-tech/auth';
+import { authApi } from '@/lib/auth';
+import type { AuthUser, TokenPair } from '@/lib/auth';
 
 import { cn } from '@boldmind-tech/ui';
 import { toast } from 'sonner';
