@@ -22,14 +22,14 @@ class EducenterAPI {
 
   // ==================== Subjects ====================
 
-  async getSubjects(examType: ExamType) {
-    return boldMindAPI.educenter.subjects(examType);
+  async getSubjects(examType: string) {
+    return boldMindAPI.educenter.subjects(examType as ExamType);
   }
 
   // ==================== Years ====================
 
-  async getYears(examType: ExamType) {
-    return boldMindAPI.educenter.questionsPreview({ examType, limit: 1 });
+  async getYears(examType: string) {
+    return boldMindAPI.educenter.questionsPreview({ examType: examType as ExamType, limit: 1 });
   }
 
   // ==================== Notes ====================
