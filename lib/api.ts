@@ -28,8 +28,11 @@ class EducenterAPI {
 
   // ==================== Years ====================
 
-  async getYears(examType: string) {
-    return boldMindAPI.educenter.questionsPreview({ examType: examType as ExamType, limit: 1 });
+  async getYears(_examType: string): Promise<{ data: string[] }> {
+    const currentYear = new Date().getFullYear();
+    const years: string[] = [];
+    for (let y = currentYear - 1; y >= 2000; y--) years.push(String(y));
+    return { data: years };
   }
 
   // ==================== Notes ====================
