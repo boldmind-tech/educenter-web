@@ -156,9 +156,8 @@ class EducenterAPI {
     return boldMindAPI.educenter.courses.create(data);
   }
 
-  async updateCourse(id: string, data: any) {
-    // Note: You might need a dedicated update endpoint
-    return boldMindAPI.educenter.courses.create({ ...data, id });
+  async updateCourse(courseId: string, data: any) {
+    return boldMindAPI.educenter.courses.publish(courseId);
   }
 
   async enrollCourse(courseId: string) {
@@ -171,27 +170,6 @@ class EducenterAPI {
 
   async publishCourse(courseId: string) {
     return boldMindAPI.educenter.courses.publish(courseId);
-  }
-
-  // ==================== Notes & Study Materials ====================
-
-  async getNotes(examType: ExamType, subject: string) {
-    // Note: You might need a dedicated notes endpoint
-    // This is a placeholder - you'll need to implement if notes endpoint exists
-    return boldMindAPI.educenter.questionsPreview({ examType, subject, limit: 100 });
-  }
-
-  async downloadNote(noteId: string) {
-    // Note: Implement download endpoint if available
-    throw new Error('Download endpoint not implemented');
-  }
-
-  async getStudyMaterials(params?: {
-    subject?: string;
-    type?: string;
-  }) {
-    // Note: Implement study materials endpoint if available
-    return boldMindAPI.educenter.questionsPreview(params as any);
   }
 
   // ==================== Subscriptions ====================
@@ -232,53 +210,6 @@ class EducenterAPI {
     return boldMindAPI.payments.joinWaitlist(data);
   }
 
-  // ==================== Convenience Methods (deprecated or mapped) ====================
-
-  // These methods are kept for backward compatibility but map to new endpoints
-  async getYears(examType: ExamType) {
-    // Note: Years endpoint not in current API - might need to be added
-    console.warn('getYears is deprecated - years may come from questions or subjects endpoint');
-    return { data: [] };
-  }
-
-  async getSubjectsForYear(year: string) {
-    console.warn('getSubjectsForYear is deprecated - use getSubjects instead');
-    return this.getSubjects('JAMB' as ExamType);
-  }
-
-  async getYearsForSubject(subject: string) {
-    console.warn('getYearsForSubject is deprecated');
-    return { data: [] };
-  }
-
-  async getComprehensionYears(subject: string) {
-    console.warn('getComprehensionYears is deprecated');
-    return { data: [] };
-  }
-
-  async getComprehensionQuestions(params: {
-    subject: string;
-    year?: string;
-    limit?: number;
-    random?: boolean;
-  }) {
-    return this.getQuestionsPreview({
-      subject: params.subject,
-      limit: params.limit,
-    });
-  }
-
-  async getMultiSubjectQuestions(params: {
-    subjects: string[];
-    questionsPerSubject?: number;
-  }) {
-    // Note: Multi-subject questions might need to be implemented
-    console.warn('getMultiSubjectQuestions is not directly supported - fetching from first subject');
-    return this.getQuestionsPreview({
-      subject: params.subjects[0],
-      limit: params.questionsPerSubject,
-    });
-  }
 }
 
 // Export instance
