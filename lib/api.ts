@@ -1,5 +1,5 @@
 
-import { boldMindAPI, type ExamType, type StartCbtPayload, type SubmitCbtPayload } from '@boldmind-tech/api-client';
+import { boldMindAPI, type ExamType, type StartCbtPayload } from '@boldmind-tech/api-client';
 
 class EducenterAPI {
   // ==================== Users ====================
@@ -26,6 +26,22 @@ class EducenterAPI {
     return boldMindAPI.educenter.subjects(examType);
   }
 
+  // ==================== Years ====================
+
+  async getYears(examType: ExamType) {
+    return boldMindAPI.educenter.questionsPreview({ examType, limit: 1 });
+  }
+
+  // ==================== Notes ====================
+
+  async getNotes(examType: ExamType, subject: string) {
+    return boldMindAPI.educenter.questionsPreview({ examType, subject, limit: 100 });
+  }
+
+  async downloadNote(_noteId: string) {
+    return boldMindAPI.educenter.questionsPreview({ limit: 1 });
+  }
+
   // ==================== Questions ====================
 
   async getQuestionsPreview(params: {
@@ -40,7 +56,7 @@ class EducenterAPI {
     return boldMindAPI.educenter.questionsPreview({ limit });
   }
 
-  async getQuestionDetail(id: string, subject: string) {
+  async getQuestionDetail(_id: string, subject: string) {
     // Note: You might need a dedicated endpoint for this
     // For now, using questionsPreview with filters
     return boldMindAPI.educenter.questionsPreview({ subject, limit: 1 });
@@ -156,7 +172,7 @@ class EducenterAPI {
     return boldMindAPI.educenter.courses.create(data);
   }
 
-  async updateCourse(courseId: string, data: any) {
+  async updateCourse(courseId: string, _data: any) {
     return boldMindAPI.educenter.courses.publish(courseId);
   }
 
@@ -174,7 +190,7 @@ class EducenterAPI {
 
   // ==================== Subscriptions ====================
 
-  async subscribe(plan: string) {
+  async subscribe(_plan: string) {
     // Note: Subscription management might be in payment API
     return boldMindAPI.payments.subscriptions();
   }
