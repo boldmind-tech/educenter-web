@@ -10,7 +10,7 @@ interface EducenterLayoutProps {
 
 const EDUCENTER_THEME: ProductThemeType = {
   slug: 'educenter',
-  name: 'EduCenter',
+  name: 'EduCenter NG',
   description: 'Pass Exams. Build Business. Master AI.',
   icon: '🎓',
   status: 'LIVE',
