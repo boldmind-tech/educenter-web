@@ -88,7 +88,7 @@ export default function SubjectDetailPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                     <button
                         onClick={startRandomQuiz}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-6 hover:shadow-xl hover:scale-105 transition-all text-left group"
+                        className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white rounded-2xl p-6 hover:shadow-xl hover:scale-105 transition-all text-left group"
                     >
                         <PlayCircle className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
                         <h3 className="text-xl font-bold mb-2">Quick Practice</h3>
@@ -152,7 +152,7 @@ export default function SubjectDetailPage() {
                             </p>
                             <button
                                 onClick={() => router.back()}
-                                className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                                className="inline-flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                             >
                                 <ArrowRight className="w-5 h-5 rotate-180" />
                                 <span>Choose Another Subject</span>
@@ -191,3 +191,4 @@ export default function SubjectDetailPage() {
         </div>
     );
 }
+

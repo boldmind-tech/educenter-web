@@ -236,7 +236,7 @@ export default function PracticePage() {
                             {!showResults && (
                                 <button
                                     onClick={handleSubmit}
-                                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all"
+                                    className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all"
                                 >
                                     Submit
                                 </button>
@@ -270,7 +270,7 @@ export default function PracticePage() {
                         ${showResults && isWrong ? 'bg-red-500 text-white' : ''}
                         ${!showResults && isAnswered ? 'bg-blue-500 text-white' : ''}
                         ${!showResults && !isAnswered && !isCurrent ? 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' : ''}
-                        ${!showResults && !isAnswered && isCurrent ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : ''}
+                        ${!showResults && !isAnswered && isCurrent ? 'bg-blue-100 dark:bg-blue-900/30 text-[#2A4A6E] dark:text-[#FFC800]' : ''}
                       `}
                                         >
                                             {index + 1}
@@ -293,7 +293,7 @@ export default function PracticePage() {
                                     </p>
                                     <button
                                         onClick={handleReset}
-                                        className="w-full flex items-center justify-center space-x-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                                        className="w-full flex items-center justify-center space-x-2 bg-[#00143C] text-white py-2 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                                     >
                                         <RotateCcw className="w-5 h-5" />
                                         <span>Try Again</span>
@@ -396,7 +396,7 @@ export default function PracticePage() {
                                 <button
                                     onClick={handleNext}
                                     disabled={currentIndex === questions.length - 1}
-                                    className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="flex items-center space-x-2 px-6 py-3 bg-[#00143C] text-white rounded-lg hover:bg-[#1E3A5F] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <span>Next</span>
                                     <ArrowRight className="w-5 h-5" />
@@ -409,3 +409,4 @@ export default function PracticePage() {
         </div>
     );
 }
+

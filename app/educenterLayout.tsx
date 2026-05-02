@@ -15,9 +15,9 @@ const EDUCENTER_THEME: ProductThemeType = {
   icon: '🎓',
   status: 'LIVE',
   colors: {
-    primary:    '#1E40AF',   // royal blue
-    secondary:  '#F59E0B',   // amber
-    accent:     '#3B82F6',   // lighter blue for hover states
+    primary:    '#00143C',   // brand navy
+    secondary:  '#FFC800',   // brand gold
+    accent:     '#2A4A6E',   // mid navy for hover states
     background: '#FAFAFA',
   },
 };

@@ -85,7 +85,7 @@ export default function StudyHubPage() {
               <span className="text-sm font-black text-blue-600 uppercase tracking-widest">Master Your Exams</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight animate-slide-in">
-              The Study <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Hub</span>
+              The Study <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E]">Hub</span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 font-medium leading-relaxed animate-fade-in delay-200">
               Access over 10,000+ past questions for JAMB, WAEC & NECO. Practice in real-time and track your improvement.
@@ -157,7 +157,7 @@ export default function StudyHubPage() {
                 </div>
 
                 <div className="p-8">
-                  <p className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">{exam.fullName}</p>
+                  <p className="text-xs font-black text-[#2A4A6E] dark:text-[#FFC800] uppercase tracking-widest mb-1">{exam.fullName}</p>
                   <p className="text-gray-600 dark:text-gray-400 font-medium mb-8 leading-relaxed line-clamp-2">
                     {exam.description}
                   </p>
@@ -194,7 +194,7 @@ export default function StudyHubPage() {
             </p>
             <Link
               href="/study-hub/leaderboard"
-              className="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-[2rem] font-black text-lg hover:scale-105 transition-all shadow-xl shadow-blue-500/20"
+              className="inline-flex items-center gap-3 bg-[#00143C] text-white px-10 py-5 rounded-[2rem] font-black text-lg hover:scale-105 transition-all shadow-xl shadow-blue-500/20"
             >
               <Trophy className="w-6 h-6" />
               View Leaderboard
@@ -208,3 +208,4 @@ export default function StudyHubPage() {
     </div>
   );
 }
+

@@ -198,7 +198,7 @@ export default function SubscriptionPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h1 className="text-4xl font-bold mb-4">Choose Your Learning Path</h1>
           <p className="text-xl text-blue-100">
@@ -311,3 +311,4 @@ export default function SubscriptionPage() {
     </div>
   );
 }
+

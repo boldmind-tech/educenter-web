@@ -194,7 +194,7 @@ export default function SubjectsPage() {
             </p>
             <button
               onClick={loadSubjects}
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20"
+              className="inline-flex items-center gap-2 bg-[#00143C] text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20"
             >
               Try Again
             </button>
@@ -204,3 +204,4 @@ export default function SubjectsPage() {
     </div>
   );
 }
+

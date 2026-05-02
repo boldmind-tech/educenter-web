@@ -173,7 +173,7 @@ export default function LeaderboardPage() {
 
                 {/* User Rank Card */}
                 {userRank && (
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-6 mb-8">
+                    <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white rounded-2xl p-6 mb-8">
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-blue-100 mb-1">Your Rank</p>
@@ -305,7 +305,7 @@ export default function LeaderboardPage() {
                             </p>
                             <Link
                                 href="/study-hub/subjects"
-                                className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                                className="inline-flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                             >
                                 <span>Start Practicing</span>
                                 <ArrowRight className="w-5 h-5" />
@@ -317,3 +317,4 @@ export default function LeaderboardPage() {
         </div>
     );
 }
+

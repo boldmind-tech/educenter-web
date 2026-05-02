@@ -125,7 +125,7 @@ export default function BusinessSchoolPage() {
                         {!subscription?.active && (
                             <Link
                                 href="/subscription"
-                                className="inline-flex items-center space-x-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold hover:bg-purple-50 transition-all shadow-lg"
+                                className="inline-flex items-center space-x-2 bg-white text-[#2A4A6E] px-8 py-4 rounded-xl font-semibold hover:bg-purple-50 transition-all shadow-lg"
                             >
                                 <Lock className="w-5 h-5" />
                                 <span>Subscribe to Access All Courses</span>
@@ -235,7 +235,7 @@ export default function BusinessSchoolPage() {
 
                                 <div className="p-6">
                                     <div className="flex items-center justify-between mb-3">
-                                        <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-semibold rounded-full capitalize">
+                                        <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-[#2A4A6E] dark:text-purple-400 text-sm font-semibold rounded-full capitalize">
                                             {course.category?.replace('-', ' ')}
                                         </span>
                                         <div className="flex items-center space-x-1 text-yellow-500">
@@ -244,7 +244,7 @@ export default function BusinessSchoolPage() {
                                         </div>
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2A4A6E] dark:group-hover:text-purple-400 transition-colors">
                                         {course.title}
                                     </h3>
 
@@ -336,3 +336,4 @@ export default function BusinessSchoolPage() {
         </div>
     );
 }
+

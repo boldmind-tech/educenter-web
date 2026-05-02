@@ -92,7 +92,7 @@ export default function QuizHistoryPage() {
 
     const getGrade = (percentage: number) => {
         if (percentage >= 90) return { grade: 'A', color: 'text-green-600 dark:text-green-400' };
-        if (percentage >= 80) return { grade: 'B', color: 'text-blue-600 dark:text-blue-400' };
+        if (percentage >= 80) return { grade: 'B', color: 'text-[#2A4A6E] dark:text-[#FFC800]' };
         if (percentage >= 70) return { grade: 'C', color: 'text-yellow-600 dark:text-yellow-400' };
         if (percentage >= 60) return { grade: 'D', color: 'text-orange-600 dark:text-orange-400' };
         return { grade: 'F', color: 'text-red-600 dark:text-red-400' };
@@ -112,7 +112,7 @@ export default function QuizHistoryPage() {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+            <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <Link
                         href="/study-hub"
@@ -198,7 +198,7 @@ export default function QuizHistoryPage() {
                         <button
                             onClick={() => setFilter('all')}
                             className={`px-4 py-2 rounded-lg font-medium transition-colors ${filter === 'all'
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-[#00143C] text-white'
                                 : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                                 }`}
                         >
@@ -243,7 +243,7 @@ export default function QuizHistoryPage() {
                                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white capitalize">
                                                     {quiz.subject}
                                                 </h3>
-                                                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold">
+                                                <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-[#2A4A6E] dark:text-[#FFC800] rounded-full text-sm font-semibold">
                                                     {quiz.examType}
                                                 </span>
                                                 {quiz.status === 'COMPLETED' ? (
@@ -290,7 +290,7 @@ export default function QuizHistoryPage() {
 
                                             <Link
                                                 href={`/study-hub/quiz/${quiz.id}`}
-                                                className="flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                                                className="flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                                             >
                                                 <Eye className="w-5 h-5" />
                                                 <span>{quiz.status === 'COMPLETED' ? 'Review' : 'Continue'}</span>
@@ -314,7 +314,7 @@ export default function QuizHistoryPage() {
                         </p>
                         <Link
                             href="/study-hub/subjects"
-                            className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                            className="inline-flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                         >
                             <span>Start Practicing</span>
                             <ArrowRight className="w-5 h-5" />
@@ -325,3 +325,4 @@ export default function QuizHistoryPage() {
         </div>
     );
 }
+

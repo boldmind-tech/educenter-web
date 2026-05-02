@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -8,8 +9,20 @@ const config = {
   theme: {
     extend: {
       colors: {
-        'edu-blue': { 50: '#EFF6FF', 100: '#DBEAFE', 600: '#2563EB', 700: '#1D4ED8' },
-        'edu-amber': '#F59E0B',
+        // ── Brand palette (matches home page hero) ──────────────────
+        'edu-navy': {
+          DEFAULT: '#00143C',   // deepest — text, auth bg
+          deep:    '#0F1E35',   // dark section backgrounds
+          mid:     '#1E3A5F',   // hero gradient start
+          light:   '#2A4A6E',   // headings, sidebar active
+          muted:   '#0A1F4F',   // subtle overlay
+        },
+        'edu-gold': {
+          DEFAULT: '#FFC800',
+          dark:    '#E6B400',
+        },
+        'edu-green': '#00A859',
+        'edu-blue':  '#1E40AF',  // kept for legacy / theme-provider
       },
       keyframes: {
         'animate-float': {
@@ -22,9 +35,9 @@ const config = {
         },
       },
       animation: {
-        'float':          'animate-float 3s ease-in-out infinite',
-        'float-delayed':  'animate-float 3s ease-in-out 1.5s infinite',
-        'gradient':       'animate-gradient 4s ease infinite',
+        'float':         'animate-float 3s ease-in-out infinite',
+        'float-delayed': 'animate-float 3s ease-in-out 1.5s infinite',
+        'gradient':      'animate-gradient 4s ease infinite',
       },
     },
   },

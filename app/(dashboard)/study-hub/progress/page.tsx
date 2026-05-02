@@ -86,15 +86,15 @@ export default function ProgressPage() {
 
     const getPerformanceLevel = (accuracy: number) => {
         if (accuracy >= 90) return { level: 'Excellent', color: 'text-green-600 dark:text-green-400', bg: 'bg-green-100 dark:bg-green-900/30' };
-        if (accuracy >= 80) return { level: 'Very Good', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-100 dark:bg-blue-900/30' };
+        if (accuracy >= 80) return { level: 'Very Good', color: 'text-[#2A4A6E] dark:text-[#FFC800]', bg: 'bg-blue-100 dark:bg-blue-900/30' };
         if (accuracy >= 70) return { level: 'Good', color: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-100 dark:bg-yellow-900/30' };
         if (accuracy >= 60) return { level: 'Fair', color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-100 dark:bg-orange-900/30' };
         return { level: 'Needs Improvement', color: 'text-red-600 dark:text-red-400', bg: 'bg-red-100 dark:bg-red-900/30' };
     };
 
     const getStrengthLevel = (questionsAttempted: number) => {
-        if (questionsAttempted >= 500) return { label: 'Expert', color: 'text-purple-600 dark:text-purple-400' };
-        if (questionsAttempted >= 200) return { label: 'Advanced', color: 'text-blue-600 dark:text-blue-400' };
+        if (questionsAttempted >= 500) return { label: 'Expert', color: 'text-[#2A4A6E] dark:text-purple-400' };
+        if (questionsAttempted >= 200) return { label: 'Advanced', color: 'text-[#2A4A6E] dark:text-[#FFC800]' };
         if (questionsAttempted >= 100) return { label: 'Intermediate', color: 'text-green-600 dark:text-green-400' };
         if (questionsAttempted >= 50) return { label: 'Beginner', color: 'text-yellow-600 dark:text-yellow-400' };
         return { label: 'Novice', color: 'text-gray-600 dark:text-gray-400' };
@@ -114,7 +114,7 @@ export default function ProgressPage() {
     if (!progress || progress.questionsAttempted === 0) {
         return (
             <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                         <Link
                             href="/study-hub"
@@ -138,7 +138,7 @@ export default function ProgressPage() {
                         </p>
                         <Link
                             href="/study-hub/subjects"
-                            className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                            className="inline-flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                         >
                             <span>Start Practicing</span>
                             <ArrowRight className="w-5 h-5" />
@@ -156,7 +156,7 @@ export default function ProgressPage() {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2A4A6E] text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <Link
                         href="/study-hub"
@@ -183,7 +183,7 @@ export default function ProgressPage() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Overall Performance Card */}
-                <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 mb-8 text-white">
+                <div className="bg-gradient-to-br from-[#1E3A5F] to-[#2A4A6E] rounded-2xl p-8 mb-8 text-white">
                     <div className="flex items-center justify-between mb-6">
                         <div>
                             <h2 className="text-2xl font-bold mb-2">Overall Performance</h2>
@@ -330,24 +330,24 @@ export default function ProgressPage() {
                         <div className="space-y-4">
                             <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                                 <div className="flex items-center space-x-3">
-                                    <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                    <Clock className="w-5 h-5 text-[#2A4A6E] dark:text-[#FFC800]" />
                                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                         Avg. Time per Question
                                     </span>
                                 </div>
-                                <span className="font-bold text-blue-600 dark:text-blue-400">
+                                <span className="font-bold text-[#2A4A6E] dark:text-[#FFC800]">
                                     {Math.round(progress.totalTimeSpent / progress.questionsAttempted)}s
                                 </span>
                             </div>
 
                             <div className="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
                                 <div className="flex items-center space-x-3">
-                                    <Trophy className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                    <Trophy className="w-5 h-5 text-[#2A4A6E] dark:text-purple-400" />
                                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                         Success Rate
                                     </span>
                                 </div>
-                                <span className="font-bold text-purple-600 dark:text-purple-400">
+                                <span className="font-bold text-[#2A4A6E] dark:text-purple-400">
                                     {accuracy}%
                                 </span>
                             </div>
@@ -407,7 +407,7 @@ export default function ProgressPage() {
                 <div className="mt-8 flex items-center justify-center space-x-4">
                     <Link
                         href="/study-hub/subjects"
-                        className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                        className="inline-flex items-center space-x-2 bg-[#00143C] text-white px-6 py-3 rounded-lg hover:bg-[#1E3A5F] transition-colors"
                     >
                         <BookOpen className="w-5 h-5" />
                         <span>Continue Practicing</span>
@@ -424,3 +424,4 @@ export default function ProgressPage() {
         </div>
     );
 }
+
