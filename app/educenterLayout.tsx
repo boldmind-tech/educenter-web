@@ -11,7 +11,7 @@ interface EducenterLayoutProps {
 const EDUCENTER_THEME: ProductThemeType = {
   slug: 'educenter',
   name: 'EduCenter',
-  description: 'Nigeria\'s leading exam prep and digital skills platform',
+  description: 'Pass Exams. Build Business. Master AI.',
   icon: '🎓',
   status: 'LIVE',
   colors: {
