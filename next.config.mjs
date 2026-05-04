@@ -1,73 +1,54 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
-  reactStrictMode: true,
-
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Tell webpack to ignore node: built-ins on the client side
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        crypto: false,
-        stream: false,
-        buffer: false,
-        util: false,
-        url: false,
-        querystring: false,
-        path: false,
-        os: false,
-        fs: false,
-        net: false,
-        tls: false,
-        child_process: false,
-      };
-    }
-    // Handle node: URI scheme
-    config.externals = config.externals || [];
-    if (isServer) {
-      if (Array.isArray(config.externals)) {
-        config.externals.push(({ request }, callback) => {
-          if (request?.startsWith('node:')) {
-            return callback(null, `commonjs ${request.replace('node:', '')}`);
-          }
-          callback();
-        });
-      }
-    }
-    return config;
-  },
-
   transpilePackages: [
     '@boldmind-tech/ui',
-    '@boldmind-tech/utils',
     '@boldmind-tech/auth',
+    '@boldmind-tech/utils',
     '@boldmind-tech/api-client',
-    '@boldmind-tech/analytics',
-
   ],
 
+  output: 'standalone',
 
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: '**' },
-      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: '**.boldmind.ng' },
+      { protocol: 'https', hostname: '**.amebogist.ng' },
+      { protocol: 'https', hostname: '**.educenter.com.ng' },
+      { protocol: 'https', hostname: '**.villagecircle.ng'},
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
+      { protocol: 'https', hostname: '**.vercel.app' },
+      { protocol: 'https', hostname: '**.r2.cloudflarestorage.com' },
     ],
   },
 
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
 
-  output: 'standalone',
+  experimental: {
+    externalDir: true,
+  },
+
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Frame-Options',       value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy',        value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy',     value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

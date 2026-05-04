@@ -1,4 +1,3 @@
-
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { EducenterLayout } from "./educenterLayout";
@@ -215,10 +214,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.cdnfonts.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//api.boldmind.ng" />
         <link rel="dns-prefetch" href="//cdn.boldmind.ng" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-<meta name="application-name" content="EduCenter NG" />
+<meta name="application-name" content="EduCenter" />
 <meta name="description" content="Pass exams. Build business. Master AI." />
 <meta name="theme-color" content="#1E40AF" />
 <meta name="msapplication-TileColor" content="#1E40AF" />
